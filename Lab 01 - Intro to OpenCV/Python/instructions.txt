@@ -1,0 +1,33 @@
+Lab #1: Espace de couleur HSV 
+Ce premier laboratoire est une simple introduction au traitement des images et à OpenCV.
+
+Vous devez créer un programme (Python ou C++) qui ouvre une image en format RGB, puis la convertie dans l'espace de couleur HSV, 
+puis fixe le canal V de tous les pixels à 255 (ainsi la brillance de tous les pixels sera la même). 
+Refaites la conversion vers l'espace RGB et afficher l'image résultat.
+
+Montrer votre résultat à votre TA durant le laboratoire (vous avez jusqu'au 2 février pour compléter l'exercice).
+
+
+==================== Install in virtual env (Linux) ====================
+
+python3 -m venv <MYPROJ>
+source <MYPROJ>/bin/activate
+deactive
+
+==================== Install in virtual env (Windows) ====================
+--> python -m venv csi4533_labs
+--> .\csi4533_labs\Scripts\activate
+
+=== Troubleshoot ===
+--> Get-ExecutionPolicy
+if "Restricted..."
+--> Set-ExecutionPolicy RemoteSigned
+
+=== now try again ===
+--> .\csi4533_labs\Scripts\activate
+--> deactivate
+
+==================== Install OpenCV packages ====================
+
+pip install opencv-python
+pip install opencv-contrib-python
