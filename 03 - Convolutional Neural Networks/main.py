@@ -3,6 +3,12 @@ from PIL import Image
 from utils import model, tools
 import torch
 
+def remove_png_extension(filename):
+    if filename.endswith('.png'):
+        return filename[:-4]  # Remove last 4 characters (i.e., '.png')
+    else:
+        return filename
+
 # Point d'entrée principal du script
 if __name__ == "__main__":
 
@@ -14,7 +20,7 @@ if __name__ == "__main__":
     counter = 0
     
     for file in os.listdir(source_path_dir):
-        if file.endswith(".png") and counter < 10:
+        if file.endswith(".png"):
             counter += 1
 
             image_name = file
@@ -35,8 +41,13 @@ if __name__ == "__main__":
                 output = seg_model([transformed_img])
                 # print(output)
 
+            imagename_no_ext = remove_png_extension(image_name)
+
             # Traiter le résultat de l'inférence
-            result = tools.process_inference(output,image,image_name)
+            result = tools.process_inference(output,image,imagename_no_ext)
+
+            result = tools.apply_saved_mask(image, imagename_no_ext)
+
             result.save(os.path.join(output_path_dir, image_name))
             
             # result.show()
